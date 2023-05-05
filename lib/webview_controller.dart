@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'dart:isolate';
@@ -12,7 +11,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/foundation.dart';
 import 'package:vibration/vibration.dart';
 import 'package:we2gether/web_notification.dart';
-
 
 class WebViewController extends GetxController {
   ///////////////

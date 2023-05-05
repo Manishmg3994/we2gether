@@ -236,6 +236,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:we2gether/web_notification.dart';
 import 'package:we2gether/webview_binding.dart';
@@ -257,6 +258,9 @@ final userScripts = <UserScript>[];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Permission.camera.request();
+  await Permission.microphone.request();
+
   sharedPreferences = await SharedPreferences.getInstance();
   HttpOverrides.global = MyHttpoverrides();
 
@@ -267,6 +271,7 @@ void main() async {
         ignoreSsl:
             false // option: set to false to disable working with http links (default: false)
         );
+    await Permission.storage.request();
 
     final jsNotificationApiUserScript = UserScript(
         source: await rootBundle.loadString('assets/web_notification.js'),
